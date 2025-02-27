@@ -10,7 +10,7 @@ function serveForm(req,res){
    res.sendFile(path.join(__dirname,'../','views','createuser.html'))
 }
 function addUser(req,res){
-   let firstName = req.body.firstname;
+   try{let firstName = req.body.firstname;
    let lastName = req.body.lastname;
    fs.readFile(path.join(__dirname,'../','data','data.json'),(err,data)=>{
      let jsObj = JSON.parse(data);
@@ -20,13 +20,19 @@ function addUser(req,res){
        res.send(normalMessage('User submitted'))
     })
    })
+}catch(e){
+   res.status(500).send(errorMessage('Internal Server Error'))
+   return
+}
 }
 function listAll(req,res){
     fs.readFile(path.join(__dirname,'../','data','data.json'),(err,data)=>{
        if(err){
          console.log(err)
          res.status(500).send(errorMessage('Internal Server Error'))
+         return
        }
+       try{
        const employeeArray = JSON.parse(data.toString());
        console.log(employeeArray)
        if(employeeArray.length === 0){
@@ -34,6 +40,10 @@ function listAll(req,res){
           return 
        }
        res.status(200).send(listUsersdata(employeeArray))
+      }catch(e){
+         res.status(500).send(errorMessage('Internal Server Error'))
+         return
+      }
 
 
 
