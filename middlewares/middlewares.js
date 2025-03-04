@@ -31,7 +31,7 @@ function checkDuplicate(req,res,next){
          let employeeArray = JSON.parse(data);
          for (let em of employeeArray){
              if(em.firstName===req.body.firstname || em.lastName === req.body.lastname){
-             res.send(normalMessage('User Already Registered'));
+             res.send(errorMessage('User Already Registered'));
               return
              }
          }

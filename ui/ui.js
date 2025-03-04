@@ -45,12 +45,14 @@ const errorMessage = (message) => {
               font-size: 36px;
               margin-right: 10px;
             }
+            
           </style>
         </head>
         <body>
           <div id="container">
             <h1>❌ Error</h1>
             <p class="emoji">⚠️ ${message}</p>
+            
           </div>
         </body>
       </html>
@@ -104,6 +106,7 @@ const errorMessage = (message) => {
               font-size: 36px;
               margin-right: 10px;
             }
+             
           </style>
         </head>
         <body>
