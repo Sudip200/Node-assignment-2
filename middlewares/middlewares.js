@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { normalMessage, errorMessage } = require('../ui/ui');
-
+// validate user
 function validateUser(req, res, next) {
     try{
     const isValidName = (name) => /^[A-Za-z]+$/.test(name);
@@ -20,6 +20,7 @@ function validateUser(req, res, next) {
     res.status(500).send(errorMessage('Internal Server Error'))
 }
 }
+// check for duplicate
 function checkDuplicate(req,res,next){
    fs.readFile(path.join(__dirname,'..','data','data.json'),(err,data)=>{
          if(err){

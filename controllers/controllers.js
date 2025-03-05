@@ -1,14 +1,16 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const { normalMessage, errorMessage ,listUsersdata} = require('../ui/ui')
-
+const { normalMessage, errorMessage ,listUsersdata,welcomeMessage} = require('../ui/ui')
+// home page handler
 function homeHandler(req,res){
-    res.status(200).send(normalMessage('Welcome to the User Management System'));
+    res.status(200).send(welcomeMessage('Welcome to the User Management System'));
 }
+// serve the form to create a user
 function serveForm(req,res){
    res.sendFile(path.join(__dirname,'../','views','createuser.html'))
 }
+// add user to the data.json file
 function addUser(req,res){
    try{let firstName = req.body.firstname;
    let lastName = req.body.lastname;
@@ -17,7 +19,7 @@ function addUser(req,res){
      jsObj.push({firstName,lastName})
      console.log(jsObj)
      fs.writeFile(path.join(__dirname,'../','data','data.json'),JSON.stringify(jsObj),(err)=>{
-       res.send(normalMessage('User submitted'))
+       res.redirect('/users')
     })
    })
 }catch(e){
@@ -25,6 +27,7 @@ function addUser(req,res){
    return
 }
 }
+// list all users
 function listAll(req,res){
     fs.readFile(path.join(__dirname,'../','data','data.json'),(err,data)=>{
        if(err){
@@ -39,8 +42,10 @@ function listAll(req,res){
           res.redirect('/create')
           return 
        }
+       
        res.status(200).send(listUsersdata(employeeArray))
       }catch(e){
+         
          res.status(500).send(errorMessage('Internal Server Error'))
          return
       }
