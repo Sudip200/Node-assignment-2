@@ -10,7 +10,7 @@ function validateUser(req, res, next) {
         res.send(errorMessage('Please Enter All fields'))
         return
     } else if (!isValidName(req.body.firstname) || !isValidName(req.body.lastname)) {
-        res.send(errorMessage('Name can not be number'))
+        res.send(errorMessage('Name is invalid'))
         return
     }
     else {

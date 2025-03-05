@@ -19,7 +19,12 @@ function addUser(req,res){
      jsObj.push({firstName,lastName})
      console.log(jsObj)
      fs.writeFile(path.join(__dirname,'../','data','data.json'),JSON.stringify(jsObj),(err)=>{
-       res.redirect('/users')
+         if(err){
+            res.status(500).send(errorMessage('Internal Server Error'))
+            return
+         }
+         res.status(200).send(normalMessage('User Added Successfully'))
+         return
     })
    })
 }catch(e){
