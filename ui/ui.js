@@ -1,5 +1,5 @@
-const errorMessage = (message) => {
-    return `
+const errorMessage = (message, givenRoute = "/", routeName = "Go back") => {
+  return `
       <!DOCTYPE html>
       <html lang="en">
         <head>
@@ -9,8 +9,8 @@ const errorMessage = (message) => {
           <style>
             body {
               font-family: Arial, sans-serif;
-              background-color: #121212; /* Dark background */
-              color: #ffffff; /* White text */
+              background-color: #121212; 
+              color: #ffffff; 
               margin: 0;
               padding: 0;
               display: flex;
@@ -20,7 +20,7 @@ const errorMessage = (message) => {
             }
   
             #container {
-              background-color: #1f1f1f; /* Darker container for message */
+              background-color: #1f1f1f; 
               padding: 30px;
               border-radius: 8px;
               box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -30,13 +30,13 @@ const errorMessage = (message) => {
             }
   
             h1 {
-              color: #ff4081; /* Pink color for heading */
+              color: #ff4081; 
               font-size: 24px;
               margin-bottom: 20px;
             }
   
             p {
-              color: #f44336; /* Red color for error text */
+              color: #f44336; 
               font-size: 18px;
               margin-top: 0;
             }
@@ -61,14 +61,14 @@ const errorMessage = (message) => {
           <div id="container">
             <h1>❌ Error</h1>
             <p class="emoji">⚠️ ${message}</p>
-             <button onclick="window.history.back()">Go Back</button>
+             <a href='${givenRoute}'>${routeName}</a>
           </div>
         </body>
       </html>
     `;
-  };
-  const welcomeMessage = (message) => {
-    return `
+};
+const welcomeMessage = (message) => {
+  return `
       <!DOCTYPE html>
       <html lang="en">
         <head>
@@ -78,7 +78,7 @@ const errorMessage = (message) => {
           <style>
             body {
               font-family: Arial, sans-serif;
-              background-color: #121212; /* Dark background */
+              background-color: #121212; 
               color: #ffffff; /* White text */
               margin: 0;
               padding: 0;
@@ -89,7 +89,7 @@ const errorMessage = (message) => {
             }
   
             #container {
-              background-color: #1f1f1f; /* Darker container for message */
+              background-color: #1f1f1f; 
               padding: 30px;
               border-radius: 8px;
               box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -99,13 +99,13 @@ const errorMessage = (message) => {
             }
   
             h1 {
-              color: #ff4081; /* Pink color for heading */
+              color: #ff4081; 
               font-size: 24px;
               margin-bottom: 20px;
             }
   
             p {
-              color: #66bb6a; /* Green color for normal message text */
+              color: #66bb6a;
               font-size: 18px;
               margin-top: 0;
             }
@@ -127,11 +127,10 @@ const errorMessage = (message) => {
         </body>
       </html>
     `;
-  };
-  
-  
-  const normalMessage = (message) => {
-    return `
+};
+
+const normalMessage = (message, givenRoute = "/", routeName = "Go Back") => {
+  return `
       <!DOCTYPE html>
       <html lang="en">
         <head>
@@ -141,7 +140,7 @@ const errorMessage = (message) => {
           <style>
             body {
               font-family: Arial, sans-serif;
-              background-color: #121212; /* Dark background */
+              background-color: #121212; 
               color: #ffffff; /* White text */
               margin: 0;
               padding: 0;
@@ -152,7 +151,7 @@ const errorMessage = (message) => {
             }
   
             #container {
-              background-color: #1f1f1f; /* Darker container for message */
+              background-color: #1f1f1f; 
               padding: 30px;
               border-radius: 8px;
               box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -162,13 +161,13 @@ const errorMessage = (message) => {
             }
   
             h1 {
-              color: #ff4081; /* Pink color for heading */
+              color: #ff4081; 
               font-size: 24px;
               margin-bottom: 20px;
             }
   
             p {
-              color: #66bb6a; /* Green color for normal message text */
+              color: #66bb6a; 
               font-size: 18px;
               margin-top: 0;
             }
@@ -177,16 +176,7 @@ const errorMessage = (message) => {
               font-size: 36px;
               margin-right: 10px;
             }
-              button{
-                background-color: #ff4081;
-                color: #ffffff;
-                padding: 10px;
-                border: none;
-                border-radius: 5px;
-                font-size: 18px;
-                cursor: pointer;
-                margin-top: 20px;
-              }
+             
              
           </style>
         </head>
@@ -194,16 +184,16 @@ const errorMessage = (message) => {
           <div id="container">
             <h1>✅ Success</h1>
             <p class="emoji">🎉 ${message}</p>
-            <button onclick="window.history.back()">Go Back</button>
+              <a href='${givenRoute}'>${routeName}</a>
           </div>
         </body>
       </html>
     `;
-  };
-  const listUsersdata = (employearray) => {
-    console.log(employearray)
-    let employepart = '';
-    let firstHtml = `
+};
+const listUsersdata = (employearray) => {
+  console.log(employearray);
+  let employepart = "";
+  let firstHtml = `
       <!DOCTYPE html>
       <html lang="en">
         <head>
@@ -213,7 +203,7 @@ const errorMessage = (message) => {
           <style>
             body {
               font-family: Arial, sans-serif;
-              background-color: #121212; /* Dark background */
+              background-color: #121212; 
               color: #ffffff; /* White text */
               margin: 0;
               padding: 0;
@@ -224,7 +214,7 @@ const errorMessage = (message) => {
               flex-direction: column;
             }
             #container {
-              background-color: #1f1f1f; /* Darker container for message */
+              background-color: #1f1f1f; 
               padding: 30px;
               border-radius: 8px;
               box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -233,7 +223,7 @@ const errorMessage = (message) => {
               text-align: center;
             }
             h1 {
-              color: #ff4081; /* Pink color for heading */
+              color: #ff4081; 
               font-size: 24px;
               margin-bottom: 20px;
             }
@@ -249,7 +239,7 @@ const errorMessage = (message) => {
               align-items: center;
             }
             .no-users {
-              color: #f44336; /* Red color for the "No users" message */
+              color: #f44336; 
               font-size: 18px;
               font-weight: bold;
             }
@@ -258,40 +248,40 @@ const errorMessage = (message) => {
         <body>
           <div id="container">
     `;
-  
-    // Check if there are users in the array
-    if (employearray.length === 0) {
-      firstHtml += `
+
+  // Check if there are users in the array
+  if (employearray.length === 0) {
+    firstHtml += `
         <p class="no-users">No users found. Please add users.</p>
       `;
-    } else {
-      firstHtml += `<h1>List of Users</h1>`;
-  
-      // Loop through the users and generate HTML for each one
-      for (let user of employearray) {
-        let htmlpart = `
+  } else {
+    firstHtml += `<h1>List of Users</h1>`;
+
+    // Loop through the users and generate HTML for each one
+    for (let user of employearray) {
+      let htmlpart = `
           <div class="user">
             <span>${user.firstName} ${user.lastName}</span>
           </div>
         `;
-        employepart += htmlpart; 
-      }
-  
-      firstHtml += employepart;
+      employepart += htmlpart;
     }
-  
-    firstHtml += `
+
+    firstHtml += employepart;
+  }
+
+  firstHtml += `
           </div>
         </body>
       </html>
     `;
-  
-    return firstHtml; 
-  };
- 
-  module.exports={
-    errorMessage,
-    normalMessage,
-    listUsersdata,
-    welcomeMessage
-  }
+
+  return firstHtml;
+};
+
+module.exports = {
+  errorMessage,
+  normalMessage,
+  listUsersdata,
+  welcomeMessage,
+};
