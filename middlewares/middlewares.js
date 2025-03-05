@@ -28,12 +28,11 @@ function validateUser(req, res, next) {
 // check for duplicate
 function checkDuplicate(req, res, next) {
   fs.readFile(path.join(__dirname, "..", "data", "data.json"), (err, data) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send(errorMessage("Internal Server Error"));
-      return;
-    }
     try {
+      if (err) {
+        throw new Error("Error reading file");
+      }
+
       let employeeArray = JSON.parse(data);
       for (let em of employeeArray) {
         // if fistname+lastname already exist
