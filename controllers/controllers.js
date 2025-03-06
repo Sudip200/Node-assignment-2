@@ -33,7 +33,7 @@ function addUser(req, res) {
           console.log(jsObj);
           fs.writeFile(
             path.join(__dirname, "../", "data", "data.json"),
-            JSON.stringify(jsObj),
+            JSON.stringify(jsObj, null, 2),
             (err) => {
               try {
                 if (err) {

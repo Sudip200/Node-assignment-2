@@ -37,8 +37,9 @@ function checkDuplicate(req, res, next) {
       for (let em of employeeArray) {
         // if fistname+lastname already exist
         if (
-          em.firstName === req.body.firstname &&
-          em.lastName === req.body.lastname
+          em.firstName.toLowerCase() ===
+            req.body.firstname.trim().toLowerCase() &&
+          em.lastName.toLowerCase() === req.body.lastname.trim().toLowerCase()
         ) {
           res.send(
             errorMessage(
